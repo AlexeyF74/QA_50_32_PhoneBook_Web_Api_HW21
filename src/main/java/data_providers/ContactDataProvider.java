@@ -1,4 +1,4 @@
-package data_provaders;
+package data_providers;
 
 import dto.Contact;
 import org.testng.annotations.DataProvider;

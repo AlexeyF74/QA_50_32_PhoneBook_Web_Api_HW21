@@ -1,6 +1,6 @@
 package ui_tests;
 
-import data_provaders.ContactDataProvider;
+import data_providers.ContactDataProvider;
 import dto.Contact;
 import manager.AppManager;
 import org.testng.Assert;
