@@ -23,8 +23,9 @@ public class LoginApiTest_NOT_INportant implements  BaseApi{
 
     @Test(groups = "negative")
     public void loginNegativeTest_WrongEmail_ApiTestMy() {
-        User user = new User(getProperty("loginyoho.com", "login"),
-                getProperty("base.properties", "password"));
+       // User user = new User(getProperty("loginyoho.com", "login"),
+                User user = new User("loginyoho.com", getProperty("base.properties", "password"));
+           //     getProperty("base.properties", "password"));
         RequestBody requestBody = RequestBody.create(GSON.toJson(user), JSON);
         Request request = new Request.Builder()
                 .url(BASE_URL + REGISTRATION_URL)

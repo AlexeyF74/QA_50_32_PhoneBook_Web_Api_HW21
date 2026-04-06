@@ -24,7 +24,7 @@ public class UserFactory {
 //        System.out.println(email);
 //    }
      public  static User positiveUser(){
-         User user = new User(faker.internet().emailAddress(),getProperty("base.properties", "password1"));
+         User user = new User(faker.internet().emailAddress(),getProperty("base.properties", "password"));
          return  user;
      }
 }

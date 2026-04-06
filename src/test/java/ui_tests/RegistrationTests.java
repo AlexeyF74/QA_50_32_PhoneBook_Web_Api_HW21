@@ -59,7 +59,7 @@ public class RegistrationTests extends AppManager {
 
     @Test
     public void registrationNegativeTestWithTwoDots() {
-        User user = new User("login@yoho..com", getProperty("base.properties", "password1"));
+        User user = new User("login@yoho..com", getProperty("base.properties", "password"));
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage.typeLoginRegistrationFormWithUser(user);
         loginPage.clickBtnLoginForm();

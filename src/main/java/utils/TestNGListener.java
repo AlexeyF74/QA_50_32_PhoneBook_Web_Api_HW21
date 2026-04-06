@@ -33,7 +33,11 @@ public class TestNGListener implements ITestListener {
         logger.info(result.getTestClass()+" test failed -->"+result.getName());
         logger.error("Error");
         this.driver = ((AppManager)result.getInstance()).getDriver();
-        TakeScreenShot.takeScreenShot((TakesScreenshot)  driver);
+        if (driver instanceof TakesScreenshot) {
+            TakesScreenshot ts = (TakesScreenshot) driver;
+
+        }
+      //  TakeScreenShot.takeScreenShot((TakesScreenshot)  driver);
     }
 
     @Override

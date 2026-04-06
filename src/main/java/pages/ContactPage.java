@@ -70,9 +70,6 @@ public class ContactPage extends BasePage {
 
     public void scrollToLastContact() {
         Actions actions = new Actions(driver);
-//        actions.scrollToElement(lastContact).perform();
-//        int deltaY= driver.findElement(By.xpath("//div[@class='contact-page_leftdiv__yhyke']/div"))
-//                .getSize().getHeight();
         int deltaY = divListContact.getSize().getHeight();
         System.out.println("Height-->" + deltaY);
         WheelInput.ScrollOrigin scrollOrigin = WheelInput.ScrollOrigin.fromElement(contactList.get(0));
