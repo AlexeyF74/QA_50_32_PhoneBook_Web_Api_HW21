@@ -1,11 +1,13 @@
 package api_tests;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dto.User;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utils.BaseApi;
@@ -19,30 +21,42 @@ public class AddContact implements BaseApi {
 
     @BeforeClass
     public void login() {
-        User user = new User(getProperty("base.properties", "login"),
-                getProperty("base.properties", "password"));
+        User user = new User(
+                getProperty("base.properties", "login"),
+                getProperty("base.properties", "password")
+        );
+
         RequestBody requestBody = RequestBody.create(GSON.toJson(user), JSON);
+
         Request request = new Request.Builder()
                 .url(BASE_URL + LOGIN_URL)
                 .post(requestBody)
                 .build();
-        Response response;
-        try {
-            response = OK_HTTP_CLIENT.newCall(request).execute();
-            JsonObject json = JsonParser
-                    .parseString(response.body().string())
-                    .getAsJsonObject();
 
-            token = json.get("token").getAsString();
+        try (Response response = OK_HTTP_CLIENT.newCall(request).execute()) {
+            Assert.assertNotNull(response.body(), "Response body is null");
+
+            String responseBody = response.body().string();
+            System.out.println("Status code: " + response.code());
+            System.out.println("Response body: " + responseBody);
+
+            JsonObject json = JsonParser.parseString(responseBody).getAsJsonObject();
+            JsonElement tokenElement = json.get("token");
+
+            Assert.assertEquals(response.code(), 200, "Login response code is not 200");
+            Assert.assertNotNull(tokenElement, "Token was not found in response");
+
+            token = tokenElement.getAsString();
+            System.out.println("Token: " + token);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(token);
-    }
-    @Test
-    public void TokenTestPositive(){
-        System.out.println(token);
     }
 
+    @Test
+    public void tokenTestPositive() {
+        Assert.assertNotNull(token, "Token should not be null");
+        System.out.println(token);
+    }
 }

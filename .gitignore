@@ -4,7 +4,24 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 .kotlin
-
+#### IntelliJ IDEA ###
+#.idea/modules.xml
+#.idea/jarRepositories.xml
+#.idea/compiler.xml
+#.idea/libraries/
+#*.iws
+#*.iml
+#*.ipr
+#
+#### Build ###
+#out/
+#!**/src/main/**/out/
+#!**/src/test/**/out/
+#
+#### Sensitive / local config ###
+#*.properties
+#src/test/resources/test_logg/
+#src/test/properties/
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
@@ -17,10 +34,11 @@ build/
 out/\0
 !**/src/main/**/out/
 !**/src/test/**/out/
-src/test/resources/properties
+src/test/properties/base.properties
+src/test/properties/pixel.properties
 src/test/resources/test_logg
-
-
+src/test/properties
+src/test/resources/properties
 ### Eclipse ###
 .apt_generated
 .classpath

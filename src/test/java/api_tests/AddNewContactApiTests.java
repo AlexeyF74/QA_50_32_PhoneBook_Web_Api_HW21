@@ -255,7 +255,7 @@ public class AddNewContactApiTests implements BaseApi {
     public void addNewContactNegative_WrongKeyLastName_ApiTest() {
         Contact contact = positiveContact();
         Map<String, String> invalidJson = new HashMap<>();
-        invalidJson.put("Shopopalo", contact.getLastName());
+        invalidJson.put("invalidLastName", contact.getLastName());
 //        invalidJson.put("lastName", contact.getLastName());
         RequestBody requestBody = RequestBody
                 .create(GSON.toJson(invalidJson), JSON);

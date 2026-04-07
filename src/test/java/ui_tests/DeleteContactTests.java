@@ -35,7 +35,7 @@ public class DeleteContactTests extends AppManager {
     @Test(groups ={"Smoke","contact"})
     public void deleteFirstContactPositiveTest() {
         contactPage.deleteFirstContact();
-        contactPage.pausa(3);
+        contactPage.pause(3);
         int countOfContactAfterDelete = contactPage.getCountOfContacts();
         Assert.assertEquals(countOfContactAfterDelete, countOfContacts - 1);
     }

@@ -73,7 +73,7 @@ public class ContactPage extends BasePage {
         int deltaY = divListContact.getSize().getHeight();
         System.out.println("Height-->" + deltaY);
         WheelInput.ScrollOrigin scrollOrigin = WheelInput.ScrollOrigin.fromElement(contactList.get(0));
-        pausa(3);
+        pause(3);
         actions.scrollFromOrigin(scrollOrigin, 0, deltaY).perform();
     }
 
@@ -119,7 +119,7 @@ public class ContactPage extends BasePage {
         inputEmail.sendKeys(contact.getEmail());
         inputAddress.clear();
         inputAddress.sendKeys(contact.getAddress());
-        pausa(3);
+        pause(3);
         btnSave.click();
 
 

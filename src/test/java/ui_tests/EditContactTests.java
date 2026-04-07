@@ -36,14 +36,14 @@ public class EditContactTests extends AppManager {
     public void  editFirstContactPositiveTest(){
         Contact contact =ContactFactory.positiveContact();
         contactPage.typeEditForm(contact);
-        contactPage.pausa(3);
+        contactPage.pause(3);
         Assert.assertTrue(contactPage.IsContactPresent(contact));
     }
     @Test(groups = "negative")
     public void  editFirstContactPositiveTest_WithCardOfContact(){
         Contact contact =ContactFactory.positiveContact();
         contactPage.typeEditForm(contact);
-        contactPage.pausa(3);
+        contactPage.pause(3);
         String text = contactPage.getTextInContact();
         softAssert.assertTrue(text.contains(contact.getName()),
                 "validate Name in DetailCard");
